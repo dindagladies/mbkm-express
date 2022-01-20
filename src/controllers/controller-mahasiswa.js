@@ -13,7 +13,7 @@ module.exports = {
             if (err) throw err;
             connection.query(
                 `
-                SELECT * FROM mahasiswa;
+                SELECT a.*, COUNT(b.id) AS "Jumlah SKS" FROM mahasiswa a LEFT JOIN krs b ON a.nim = b.nim ;
                 `
                 , function(error, results){
                     if (error) throw error;
